@@ -1,13 +1,11 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  output: 'export',
+  output: 'export', // Ensures static export
   images: {
-    unoptimized: true,
+    unoptimized: true, // Fixes image issues on GitHub Pages
   },
-  // Disable basePath since we're deploying to the root domain
-  // basePath: '',
-  // Remove assetPrefix to let Next.js handle it
-  reactStrictMode: true,
-}
+  basePath: "/dongobbi.github.io", // Your GitHub repo name
+  assetPrefix: "/dongobbi.github.io/",
+};
 
-module.exports = nextConfig
+module.exports = nextConfig;
