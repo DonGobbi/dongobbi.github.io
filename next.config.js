@@ -1,11 +1,12 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  output: 'export', // Ensures static export
+  output: 'export',
   images: {
-    unoptimized: true, // Fixes image issues on GitHub Pages
+    unoptimized: true,
   },
-  basePath: "/dongobbi.github.io", // Your GitHub repo name
-  assetPrefix: "/dongobbi.github.io/",
-};
+  reactStrictMode: true,
+  // Disable basePath since we're deploying to the root domain
+  basePath: '',
+}
 
-module.exports = nextConfig;
+module.exports = nextConfig
