@@ -3,43 +3,64 @@
 import React, { useState } from 'react';
 
 const ContactForm = () => {
-  const [submitted, setSubmitted] = useState(false);
+  const [status, setStatus] = useState<'idle' | 'submitting' | 'success' | 'error'>('idle');
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    message: ''
+  });
 
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    const form = e.currentTarget;
-    const formData = new FormData(form);
+    setStatus('submitting');
 
     try {
-      const response = await fetch('https://formspree.io/f/mvojyayw', {
+      const response = await fetch('/api/contact', {
         method: 'POST',
-        body: formData,
         headers: {
-          'Accept': 'application/json'
-        }
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData)
       });
 
       if (response.ok) {
-        setSubmitted(true);
-        form.reset();
-        // Reset the submitted state after 5 seconds
+        setStatus('success');
+        setFormData({ name: '', email: '', message: '' }); // Clear form
+        // Reset form status after 5 seconds
         setTimeout(() => {
-          setSubmitted(false);
+          setStatus('idle');
         }, 5000);
       } else {
         throw new Error('Failed to send message');
       }
     } catch (error) {
-      console.error('Error:', error);
-      alert('Failed to send message. Please try again.');
+      setStatus('error');
+      // Reset error status after 5 seconds
+      setTimeout(() => {
+        setStatus('idle');
+      }, 5000);
     }
+  };
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({
+      ...prev,
+      [name]: value
+    }));
   };
 
   return (
     <div className="space-y-6">
-      {submitted && (
+      {status === 'success' && (
         <div className="p-4 bg-green-500/10 border border-green-500/20 rounded-lg">
           <p className="text-green-400 text-center">Message sent successfully! Thank you for reaching out.</p>
+        </div>
+      )}
+
+      {status === 'error' && (
+        <div className="p-4 bg-red-500/10 border border-red-500/20 rounded-lg">
+          <p className="text-red-400 text-center">Failed to send message. Please try again later.</p>
         </div>
       )}
 
@@ -52,9 +73,12 @@ const ContactForm = () => {
             type="text"
             id="name"
             name="name"
+            value={formData.name}
+            onChange={handleChange}
             required
             placeholder="Your name"
             className="w-full px-4 py-2 rounded-lg bg-white/5 text-white placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-white/20"
+            disabled={status === 'submitting'}
           />
         </div>
 
@@ -66,9 +90,12 @@ const ContactForm = () => {
             type="email"
             id="email"
             name="email"
+            value={formData.email}
+            onChange={handleChange}
             required
             placeholder="Your email"
             className="w-full px-4 py-2 rounded-lg bg-white/5 text-white placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-white/20"
+            disabled={status === 'submitting'}
           />
         </div>
 
@@ -79,19 +106,25 @@ const ContactForm = () => {
           <textarea
             id="message"
             name="message"
+            value={formData.message}
+            onChange={handleChange}
             required
             rows={4}
             placeholder="Your message"
             className="w-full px-4 py-2 rounded-lg bg-white/5 text-white placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-white/20 resize-none"
+            disabled={status === 'submitting'}
           />
         </div>
 
         <div className="pt-4">
           <button
             type="submit"
-            className="w-full px-6 py-3 rounded-lg bg-white/10 text-white font-medium hover:bg-white/20 transition-colors duration-200 relative overflow-hidden group"
+            disabled={status === 'submitting'}
+            className="w-full px-6 py-3 rounded-lg bg-white/10 text-white font-medium hover:bg-white/20 transition-colors duration-200 relative overflow-hidden group disabled:opacity-50 disabled:cursor-not-allowed"
           >
-            <span className="relative z-10">Send Message</span>
+            <span className="relative z-10">
+              {status === 'submitting' ? 'Sending...' : 'Send Message'}
+            </span>
             <div className="absolute inset-0 bg-white/5 transform -skew-x-12 -translate-x-full group-hover:translate-x-0 transition-transform duration-300"></div>
           </button>
         </div>
