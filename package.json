@@ -19,8 +19,9 @@
     "@fortawesome/free-solid-svg-icons": "^6.5.1",
     "@fortawesome/react-fontawesome": "^0.2.0",
     "groq-sdk": "^0.3.1",
-    "next": "14.1.0",
+    "next": "14.2.24",
     "react": "18.3.1",
+
     "react-dom": "18.3.1"
   },
   "devDependencies": {
