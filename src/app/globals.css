@@ -3,10 +3,9 @@
 @tailwind utilities;
 
 :root {
-  --foreground-rgb: 255, 255, 255;
-  --background-start-rgb: 32, 35, 42;
-  --background-end-rgb: 40, 44, 52;
-  --react-primary: 97, 218, 251;
+  --react-primary: #61DAFB;
+  --react-dark: #20232a;
+  --react-darker: #282c34;
 }
 
 html {
@@ -15,12 +14,13 @@ html {
 }
 
 body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-    to bottom right,
-    rgb(var(--background-start-rgb)),
-    rgb(var(--background-end-rgb))
-  );
+  color: white;
+  background: var(--react-darker);
+}
+
+/* Smooth scrolling for all elements */
+* {
+  scroll-behavior: smooth;
 }
 
 /* Custom scrollbar */
@@ -29,33 +29,32 @@ body {
 }
 
 ::-webkit-scrollbar-track {
-  background: rgb(var(--background-start-rgb));
+  background: var(--react-dark);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: rgb(var(--react-primary));
+  background: var(--react-primary);
   border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: rgba(var(--react-primary), 0.8);
+  background: rgba(97, 218, 251, 0.8);
 }
 
-/* Navigation link animations */
+/* Navigation animations */
 .nav-link {
   position: relative;
-  padding: 0.5rem 1rem;
   transition: all 0.3s ease;
 }
 
 .nav-link::after {
   content: '';
   position: absolute;
-  bottom: 0;
+  bottom: -2px;
   left: 0;
   width: 100%;
   height: 2px;
-  background: rgb(var(--react-primary));
+  background: var(--react-primary);
   transform: scaleX(0);
   transform-origin: right;
   transition: transform 0.3s ease;
@@ -66,35 +65,17 @@ body {
   transform-origin: left;
 }
 
-/* Smooth section transitions */
+/* Section transitions */
 section {
-  transition: opacity 0.3s ease;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInUp 0.6s ease forwards;
 }
 
-/* Form input focus styles */
-input:focus, textarea:focus {
-  outline: none;
-  box-shadow: 0 0 0 2px rgb(var(--react-primary));
-}
-
-/* Button hover effects */
-button {
-  transition: all 0.2s ease;
-}
-
-button:hover:not(:disabled) {
-  transform: translateY(-1px);
-}
-
-button:active:not(:disabled) {
-  transform: translateY(0);
-}
-
-/* Chat message animations */
-@keyframes slideIn {
+@keyframes fadeInUp {
   from {
     opacity: 0;
-    transform: translateY(10px);
+    transform: translateY(20px);
   }
   to {
     opacity: 1;
@@ -102,26 +83,93 @@ button:active:not(:disabled) {
   }
 }
 
-.message-animation {
-  animation: slideIn 0.3s ease forwards;
-}
-
-/* Glass morphism effects */
-.glass-effect {
+/* Glass effect */
+.glass {
   background: rgba(32, 35, 42, 0.7);
-  backdrop-filter: blur(10px);
+  backdrop-filter: blur(12px);
   border: 1px solid rgba(97, 218, 251, 0.1);
 }
 
-/* Responsive typography */
+/* Form inputs */
+input, textarea {
+  transition: all 0.3s ease;
+}
+
+input:focus, textarea:focus {
+  outline: none;
+  border-color: var(--react-primary);
+  box-shadow: 0 0 0 2px rgba(97, 218, 251, 0.2);
+}
+
+/* Button styles */
+button {
+  transition: all 0.2s ease;
+}
+
+button:hover:not(:disabled) {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(97, 218, 251, 0.2);
+}
+
+button:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+/* Chat message animations */
+.message-enter {
+  opacity: 0;
+  transform: translateY(10px);
+}
+
+.message-enter-active {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 300ms, transform 300ms;
+}
+
+/* Mobile optimizations */
 @media (max-width: 640px) {
-  h1 {
-    font-size: 1.5rem;
+  .nav-link::after {
+    bottom: -4px;
   }
-  h2 {
-    font-size: 1.25rem;
+  
+  section {
+    animation-duration: 0.4s;
   }
-  p {
-    font-size: 0.875rem;
+  
+  .glass {
+    backdrop-filter: blur(8px);
   }
+}
+
+/* Prevent text selection on interactive elements */
+button, a {
+  -webkit-tap-highlight-color: transparent;
+  -webkit-touch-callout: none;
+  user-select: none;
+}
+
+/* Loading animations */
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.loading-spin {
+  animation: spin 1s linear infinite;
+}
+
+/* Hover effects */
+.hover-lift {
+  transition: transform 0.2s ease;
+}
+
+.hover-lift:hover {
+  transform: translateY(-2px);
+}
+
+/* Focus styles */
+.focus-ring {
+  @apply focus:outline-none focus:ring-2 focus:ring-[#61DAFB] focus:ring-opacity-50;
 }

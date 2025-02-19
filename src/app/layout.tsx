@@ -48,8 +48,11 @@ export default function RootLayout({
         <div className="min-h-screen bg-gradient-to-br from-[#282c34] to-[#20232a]">
           {/* React-inspired subtle pattern */}
           <div className="fixed inset-0 z-0 opacity-5">
-            <div className="absolute inset-0 bg-[url('/grid.svg')] bg-center"></div>
+            <div className="absolute inset-0 bg-[url('/grid.svg')] bg-repeat"></div>
           </div>
+          
+          {/* Gradient overlay */}
+          <div className="fixed inset-0 z-0 bg-gradient-to-b from-transparent via-[#20232a]/50 to-[#20232a] pointer-events-none"></div>
           
           {/* Main Content */}
           <div className="relative z-10">

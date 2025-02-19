@@ -23,18 +23,24 @@ const NavLink: React.FC<NavLinkProps> = ({ href, icon, children }) => {
     <a
       href={href}
       onClick={handleClick}
-      className="nav-link group relative px-4 py-2 text-white transition-all duration-300 ease-in-out"
+      className="flex items-center gap-2 px-3 py-2 text-white hover:text-[#61DAFB] transition-colors duration-300 relative group"
     >
-      <div className="flex items-center gap-2 sm:text-base text-sm">
-        <FontAwesomeIcon 
-          icon={icon} 
-          className="transform group-hover:scale-110 transition-transform duration-300 w-4 h-4 sm:w-5 sm:h-5"
-        />
-        <span className="font-medium hidden sm:inline">{children}</span>
-      </div>
+      {/* Icon */}
+      <FontAwesomeIcon 
+        icon={icon} 
+        className="w-4 h-4 sm:w-5 sm:h-5 transition-transform duration-300 group-hover:scale-110"
+      />
       
-      {/* Modern underline effect */}
-      <span className="absolute bottom-0 left-0 w-full h-0.5 bg-gradient-to-r from-blue-500 to-blue-600 transform origin-left scale-x-0 transition-transform duration-300 group-hover:scale-x-100"></span>
+      {/* Text - Hidden on mobile, visible on larger screens */}
+      <span className="hidden sm:inline font-medium">{children}</span>
+      
+      {/* Mobile text - Visible only on hover on mobile */}
+      <span className="absolute left-1/2 -translate-x-1/2 -bottom-6 text-xs bg-[#61DAFB] text-gray-900 px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity duration-300 sm:hidden whitespace-nowrap">
+        {children}
+      </span>
+      
+      {/* Underline effect */}
+      <div className="absolute bottom-0 left-0 w-full h-0.5 bg-[#61DAFB] transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></div>
     </a>
   );
 };
