@@ -1,5 +1,4 @@
 import { faUser, faCode, faLaptopCode, faEnvelope } from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import NavLink from './components/NavLink';
 import ContactForm from './components/ContactForm';
 
@@ -67,15 +66,31 @@ export default function Home() {
         {/* Projects Section */}
         <section id="projects" className="min-h-screen py-16 px-4">
           <div className="max-w-4xl mx-auto">
-            <h2 className="text-3xl font-bold text-[#61DAFB] mb-8">Projects</h2>
+            <h2 className="text-3xl font-bold text-[#61DAFB] mb-8">Featured Projects</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               <div className="bg-gray-800/50 rounded-lg p-6">
-                <h3 className="text-xl font-semibold text-[#61DAFB] mb-4">Project 1</h3>
-                <p className="text-gray-200">Description of project 1</p>
+                <h3 className="text-xl font-semibold text-[#61DAFB] mb-4">AI-Powered Knowledge Base</h3>
+                <p className="text-gray-200 mb-4">
+                  A sophisticated document processing system using LangChain and LLAMA Index for intelligent information retrieval and analysis.
+                </p>
+                <p className="text-gray-200">Technologies: FastAPI, LangChain, Next.js, Chroma DB</p>
+                <button className="mt-2 text-[#61DAFB] underline">Learn More</button>
               </div>
               <div className="bg-gray-800/50 rounded-lg p-6">
-                <h3 className="text-xl font-semibold text-[#61DAFB] mb-4">Project 2</h3>
-                <p className="text-gray-200">Description of project 2</p>
+                <h3 className="text-xl font-semibold text-[#61DAFB] mb-4">Enterprise Data Platform</h3>
+                <p className="text-gray-200 mb-4">
+                  Scalable data management system built with FastAPI, PostgreSQL, and SQLAlchemy, containerized with Docker.
+                </p>
+                <p className="text-gray-200">Technologies: FastAPI, PostgreSQL, Docker, Redux</p>
+                <button className="mt-2 text-[#61DAFB] underline">Learn More</button>
+              </div>
+              <div className="bg-gray-800/50 rounded-lg p-6">
+                <h3 className="text-xl font-semibold text-[#61DAFB] mb-4">Vector Search Engine</h3>
+                <p className="text-gray-200 mb-4">
+                  Advanced search system utilizing Pinecone and Qdrant for efficient vector similarity search and retrieval.
+                </p>
+                <p className="text-gray-200">Technologies: Pinecone, Qdrant, React, TailwindCSS</p>
+                <button className="mt-2 text-[#61DAFB] underline">Learn More</button>
               </div>
             </div>
           </div>
