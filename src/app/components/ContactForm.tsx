@@ -1,121 +1,65 @@
 'use client';
 
-import React, { useState } from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faPaperPlane } from '@fortawesome/free-solid-svg-icons';
+import React from 'react';
 
 const ContactForm = () => {
-  const [status, setStatus] = useState<'idle' | 'sending' | 'success' | 'error'>('idle');
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    message: ''
-  });
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setStatus('sending');
-
-    try {
-      const response = await fetch('https://formspree.io/f/mvojyayw', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(formData)
-      });
-
-      if (response.ok) {
-        setStatus('success');
-        setFormData({ name: '', email: '', message: '' });
-      } else {
-        setStatus('error');
-      }
-    } catch (error) {
-      setStatus('error');
-    }
-  };
-
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    setFormData(prev => ({
-      ...prev,
-      [e.target.name]: e.target.value
-    }));
-  };
-
   return (
-    <form onSubmit={handleSubmit} className="space-y-6">
+    <form
+      action="https://formspree.io/f/mvojyayw"
+      method="POST"
+      className="space-y-6"
+    >
       <div>
-        <label htmlFor="name" className="block text-sm font-medium text-gray-200 mb-1">
+        <label htmlFor="name" className="block text-white mb-2">
           Name
         </label>
         <input
           type="text"
           id="name"
           name="name"
-          value={formData.name}
-          onChange={handleChange}
           required
-          className="w-full px-4 py-2 rounded-lg bg-gray-700 border border-gray-600 text-white focus:ring-2 focus:ring-[#61DAFB] focus:border-transparent transition-all duration-200"
+          placeholder="Your name"
+          className="w-full px-4 py-2 rounded-lg bg-white/5 text-white placeholder-white/50 focus:outline-none"
         />
       </div>
 
       <div>
-        <label htmlFor="email" className="block text-sm font-medium text-gray-200 mb-1">
+        <label htmlFor="email" className="block text-white mb-2">
           Email
         </label>
         <input
           type="email"
           id="email"
           name="email"
-          value={formData.email}
-          onChange={handleChange}
           required
-          className="w-full px-4 py-2 rounded-lg bg-gray-700 border border-gray-600 text-white focus:ring-2 focus:ring-[#61DAFB] focus:border-transparent transition-all duration-200"
+          placeholder="Your email"
+          className="w-full px-4 py-2 rounded-lg bg-white/5 text-white placeholder-white/50 focus:outline-none"
         />
       </div>
 
       <div>
-        <label htmlFor="message" className="block text-sm font-medium text-gray-200 mb-1">
+        <label htmlFor="message" className="block text-white mb-2">
           Message
         </label>
         <textarea
           id="message"
           name="message"
-          value={formData.message}
-          onChange={handleChange}
           required
           rows={4}
-          className="w-full px-4 py-2 rounded-lg bg-gray-700 border border-gray-600 text-white focus:ring-2 focus:ring-[#61DAFB] focus:border-transparent transition-all duration-200"
+          placeholder="Your message"
+          className="w-full px-4 py-2 rounded-lg bg-white/5 text-white placeholder-white/50 focus:outline-none resize-none"
         />
       </div>
 
-      <button
-        type="submit"
-        disabled={status === 'sending'}
-        className="w-full px-6 py-3 rounded-lg bg-[#61DAFB] hover:bg-[#4fa8c2] text-gray-900 font-semibold flex items-center justify-center gap-2 transition-all duration-200 disabled:opacity-50"
-      >
-        {status === 'sending' ? (
-          'Sending...'
-        ) : (
-          <>
-            Send Message
-            <FontAwesomeIcon icon={faPaperPlane} className="h-4 w-4" />
-          </>
-        )}
-      </button>
-
-      {status === 'success' && (
-        <div className="text-green-400 text-center mt-4">
-          Message sent successfully!
-        </div>
-      )}
-
-      {status === 'error' && (
-        <div className="text-red-400 text-center mt-4">
-          There was an error sending your message. Please try again.
-        </div>
-      )}
+      <div className="pt-4">
+        <button
+          type="submit"
+          className="w-full px-6 py-3 rounded-lg bg-white/10 text-white font-medium hover:bg-white/20 transition-colors duration-200 relative overflow-hidden group"
+        >
+          <span className="relative z-10">Send Message</span>
+          <div className="absolute inset-0 bg-white/5 transform -skew-x-12 -translate-x-full group-hover:translate-x-0 transition-transform duration-300"></div>
+        </button>
+      </div>
     </form>
   );
 };
