@@ -1,22 +1,19 @@
 'use client';
 
-import { useCallback } from 'react';
-
 export const useScrollTo = () => {
-  const scrollTo = useCallback((elementId: string) => {
+  const scrollTo = (elementId: string) => {
     const element = document.querySelector(elementId);
-    if (!element) return;
+    if (element) {
+      const headerOffset = 80; // Height of fixed header
+      const elementPosition = element.getBoundingClientRect().top;
+      const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
 
-    const header = document.querySelector('header');
-    const headerHeight = header?.offsetHeight || 0;
-    const elementPosition = element.getBoundingClientRect().top;
-    const offsetPosition = elementPosition + window.pageYOffset - headerHeight;
-
-    window.scrollTo({
-      top: offsetPosition,
-      behavior: 'smooth'
-    });
-  }, []);
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: 'smooth'
+      });
+    }
+  };
 
   return scrollTo;
 };

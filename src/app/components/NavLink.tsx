@@ -23,22 +23,18 @@ const NavLink: React.FC<NavLinkProps> = ({ href, icon, children }) => {
     <a
       href={href}
       onClick={handleClick}
-      className="nav-link group relative overflow-hidden"
+      className="nav-link group relative px-4 py-2 text-white transition-all duration-300 ease-in-out"
     >
-      {/* Background Hover Effect */}
-      <div className="absolute inset-0 bg-white/10 transform -skew-x-12 -translate-x-full group-hover:translate-x-0 transition-transform duration-300"></div>
-      
-      {/* Icon and Text */}
-      <div className="relative flex items-center gap-2">
+      <div className="flex items-center gap-2 sm:text-base text-sm">
         <FontAwesomeIcon 
           icon={icon} 
-          className="transform group-hover:scale-110 transition-transform duration-300"
+          className="transform group-hover:scale-110 transition-transform duration-300 w-4 h-4 sm:w-5 sm:h-5"
         />
-        <span className="font-medium">{children}</span>
+        <span className="font-medium hidden sm:inline">{children}</span>
       </div>
       
-      {/* Underline Effect */}
-      <div className="absolute bottom-0 left-0 w-full h-0.5 bg-white transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></div>
+      {/* Modern underline effect */}
+      <span className="absolute bottom-0 left-0 w-full h-0.5 bg-gradient-to-r from-blue-500 to-blue-600 transform origin-left scale-x-0 transition-transform duration-300 group-hover:scale-x-100"></span>
     </a>
   );
 };

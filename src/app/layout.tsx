@@ -35,7 +35,7 @@ export default function RootLayout({
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
-        <meta name="theme-color" content="#2563eb" />
+        <meta name="theme-color" content="#61DAFB" />
         <meta name="robots" content="index, follow" />
         <meta name="googlebot" content="index, follow" />
         <meta name="format-detection" content="telephone=no" />
@@ -45,10 +45,13 @@ export default function RootLayout({
         />
       </head>
       <body className={`${inter.className} antialiased`}>
-        <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100">
+        <div className="min-h-screen bg-gradient-to-br from-[#282c34] to-[#20232a]">
+          {/* React-inspired subtle pattern */}
           <div className="fixed inset-0 z-0 opacity-5">
-            <div className="absolute inset-0 bg-grid-pattern"></div>
+            <div className="absolute inset-0 bg-[url('/grid.svg')] bg-center"></div>
           </div>
+          
+          {/* Main Content */}
           <div className="relative z-10">
             {children}
           </div>
