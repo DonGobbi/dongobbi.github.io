@@ -17,7 +17,7 @@ const ContactForm = () => {
     setStatus('sending');
 
     try {
-      const response = await fetch(process.env.NEXT_PUBLIC_FORMSPREE_ENDPOINT || '', {
+      const response = await fetch('https://formspree.io/f/mvojyayw', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
@@ -44,7 +44,7 @@ const ContactForm = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-6 max-w-lg mx-auto">
+    <form onSubmit={handleSubmit} className="space-y-6">
       <div>
         <label htmlFor="name" className="block text-sm font-medium text-gray-200 mb-1">
           Name
@@ -56,7 +56,7 @@ const ContactForm = () => {
           value={formData.name}
           onChange={handleChange}
           required
-          className="w-full px-4 py-2 rounded-lg bg-gray-800 border border-gray-700 text-white focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
+          className="w-full px-4 py-2 rounded-lg bg-gray-700 border border-gray-600 text-white focus:ring-2 focus:ring-[#61DAFB] focus:border-transparent transition-all duration-200"
         />
       </div>
 
@@ -71,7 +71,7 @@ const ContactForm = () => {
           value={formData.email}
           onChange={handleChange}
           required
-          className="w-full px-4 py-2 rounded-lg bg-gray-800 border border-gray-700 text-white focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
+          className="w-full px-4 py-2 rounded-lg bg-gray-700 border border-gray-600 text-white focus:ring-2 focus:ring-[#61DAFB] focus:border-transparent transition-all duration-200"
         />
       </div>
 
@@ -86,7 +86,7 @@ const ContactForm = () => {
           onChange={handleChange}
           required
           rows={4}
-          className="w-full px-4 py-2 rounded-lg bg-gray-800 border border-gray-700 text-white focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
+          className="w-full px-4 py-2 rounded-lg bg-gray-700 border border-gray-600 text-white focus:ring-2 focus:ring-[#61DAFB] focus:border-transparent transition-all duration-200"
         />
       </div>
 
