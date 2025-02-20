@@ -43,7 +43,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         />
       </head>
       <body className={`${inter.className} antialiased`}>
-        <div className="min-h-screen bg-gradient-to-br from-blue-600 to-blue-400">
+<div className="min-h-screen bg-gradient-to-br from-teal-600 to-teal-400">
           <div className="fixed inset-0 z-0 opacity-5">
             <div className="absolute inset-0 bg-[url('/grid.svg')] bg-repeat"></div>
           </div>

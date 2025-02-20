@@ -91,7 +91,7 @@ const ChatBot = () => {
       {!isOpen && (
         <button
           onClick={() => setIsOpen(true)}
-          className="bg-gradient-to-r from-blue-500 to-teal-400 text-white rounded-full p-4 shadow-lg hover:scale-105 transition-transform duration-200"
+className="bg-gradient-to-r from-teal-400 to-teal-400 text-white rounded-full p-4 shadow-lg hover:scale-105 transition-transform duration-200"
         >
           <FontAwesomeIcon icon={faPaperPlane} />
         </button>
@@ -100,7 +100,7 @@ const ChatBot = () => {
       {isOpen && (
         <div className="fixed inset-0 sm:absolute sm:bottom-4 sm:right-4 sm:top-auto sm:left-auto w-full sm:w-96 h-full sm:h-[32rem] bg-gray-900 rounded-none sm:rounded-lg shadow-2xl overflow-hidden animate-slide-up">
           {/* Header */}
-          <div className="bg-gradient-to-r from-blue-600 to-teal-500 p-3 flex justify-between items-center">
+<div className="bg-gradient-to-r from-teal-600 to-teal-500 p-3 flex justify-between items-center">
             <span className="text-white font-semibold text-sm">Don’s AI Assistant</span>
             <button
               onClick={() => setIsOpen(false)}
