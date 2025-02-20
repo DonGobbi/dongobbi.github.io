@@ -1,4 +1,5 @@
 import './globals.css';
+// import './smart-design.css';  // Link the new design file
 import { Inter } from 'next/font/google';
 import { config } from '@fortawesome/fontawesome-svg-core';
 import '@fortawesome/fontawesome-svg-core/styles.css';
