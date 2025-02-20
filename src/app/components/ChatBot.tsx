@@ -65,9 +65,7 @@ const ChatBot = () => {
     setIsLoading(true);
 
     try {
-      const apiUrl = process.env.NODE_ENV === 'development' 
-        ? '/api/chat' 
-        : 'https://dongobbi.github.io/api/chat';
+      const apiUrl = window.location.origin + '/api/chat';
       const response = await fetch(apiUrl, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
