@@ -65,7 +65,10 @@ const ChatBot = () => {
     setIsLoading(true);
 
     try {
-      const response = await fetch('https://dongobbi.github.io/api/chat', {
+      const apiUrl = process.env.NODE_ENV === 'development' 
+        ? '/api/chat' 
+        : 'https://dongobbi.github.io/api/chat';
+      const response = await fetch(apiUrl, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ message: userMessage }),
@@ -97,7 +100,7 @@ const ChatBot = () => {
       )}
 
       {isOpen && (
-        <div className="w-80 bg-gray-900 rounded-lg shadow-2xl overflow-hidden animate-slide-up">
+        <div className="fixed inset-0 sm:absolute sm:bottom-4 sm:right-4 sm:top-auto sm:left-auto w-full sm:w-96 h-full sm:h-[32rem] bg-gray-900 rounded-none sm:rounded-lg shadow-2xl overflow-hidden animate-slide-up">
           {/* Header */}
           <div className="bg-gradient-to-r from-blue-600 to-teal-500 p-3 flex justify-between items-center">
             <span className="text-white font-semibold text-sm">Don’s AI Assistant</span>
@@ -110,7 +113,7 @@ const ChatBot = () => {
           </div>
 
           {/* Messages */}
-          <div className="h-64 overflow-y-auto p-3 space-y-3 bg-gray-800">
+          <div className="h-[calc(100%-7rem)] sm:h-64 overflow-y-auto p-3 space-y-3 bg-gray-800">
             {messages.map((message, index) => (
               <div
                 key={index}
@@ -147,12 +150,12 @@ const ChatBot = () => {
                 value={input}
                 onChange={(e) => setInput(e.target.value)}
                 placeholder="Ask me anything..."
-                className="flex-1 px-3 py-1 rounded-lg bg-gray-700 text-white border border-gray-600 focus:ring-1 focus:ring-teal-400 transition-all duration-200 text-sm"
+                className="flex-1 px-3 py-2 sm:py-1 rounded-lg bg-gray-700 text-white border border-gray-600 focus:ring-1 focus:ring-teal-400 transition-all duration-200 text-sm"
               />
               <button
                 type="submit"
                 disabled={isLoading || !input.trim()}
-                className="px-3 py-1 rounded-lg bg-teal-400 text-gray-900 hover:bg-teal-300 disabled:opacity-50 transition-all duration-200"
+                className="px-4 py-2 sm:px-3 sm:py-1 rounded-lg bg-teal-400 text-gray-900 hover:bg-teal-300 disabled:opacity-50 transition-all duration-200"
               >
                 <FontAwesomeIcon icon={faPaperPlane} />
               </button>
