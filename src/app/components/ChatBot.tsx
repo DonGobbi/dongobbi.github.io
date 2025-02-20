@@ -65,10 +65,11 @@ const ChatBot = () => {
     setIsLoading(true);
 
     try {
-      const response = await fetch('/api/chat', {
+      const response = await fetch('https://dongobbi.github.io/api/chat', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ message: userMessage }),
+        mode: 'cors'
       });
 
       if (!response.ok) throw new Error('Failed to get response');
