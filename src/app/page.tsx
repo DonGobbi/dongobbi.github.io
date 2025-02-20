@@ -1,8 +1,15 @@
-import { faUser, faCode, faLaptopCode, faEnvelope } from '@fortawesome/free-solid-svg-icons';
+'use client';
+
+import { faUser, faCode, faLaptopCode, faEnvelope, faComment } from '@fortawesome/free-solid-svg-icons';
 import NavLink from './components/NavLink';
 import ContactForm from './components/ContactForm';
+import ChatBot from './components/ChatBot';
+import { useState } from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 export default function Home() {
+  const [isChatBotVisible, setChatBotVisible] = useState(false);
+
   return (
     <main className="min-h-screen">
       {/* Header/Navigation */}
@@ -140,6 +147,18 @@ export default function Home() {
           </div>
         </section>
       </div>
+
+      {/* ChatBot Floating Button */}
+      <div className="fixed bottom-4 right-4 z-50">
+        <button
+          onClick={() => setChatBotVisible(!isChatBotVisible)}
+          className="bg-[#61DAFB] text-gray-900 rounded-full p-3 shadow-lg hover:bg-[#4fa8c2] transition duration-200"
+        >
+          <FontAwesomeIcon icon={faComment} />
+        </button>
+      </div>
+
+      {isChatBotVisible && <ChatBot />}
     </main>
   );
 }

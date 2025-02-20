@@ -15,7 +15,7 @@ const ContactForm = () => {
     setStatus('submitting');
 
     try {
-      const response = await fetch(process.env.NEXT_PUBLIC_FORMSPREE_ENDPOINT!, {
+      const response = await fetch('https://formspree.io/f/movjyayw', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -23,8 +23,12 @@ const ContactForm = () => {
         body: JSON.stringify({
           name: formData.name,
           email: formData.email,
-          message: formData.message
-        })
+          message: formData.message,
+          _subject: 'New message from portfolio contact form',
+          _replyto: formData.email,
+          _format: 'plain'
+        }),
+        mode: 'cors'
       });
 
       if (response.ok) {

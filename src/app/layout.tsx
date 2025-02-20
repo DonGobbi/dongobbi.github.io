@@ -1,34 +1,32 @@
-import './globals.css'
-import { Inter } from 'next/font/google'
-import { config } from '@fortawesome/fontawesome-svg-core'
-import '@fortawesome/fontawesome-svg-core/styles.css'
-import { Metadata } from 'next'
+import './globals.css';
+import { Inter } from 'next/font/google';
+import { config } from '@fortawesome/fontawesome-svg-core';
+import '@fortawesome/fontawesome-svg-core/styles.css';
+import { Metadata } from 'next';
 
-config.autoAddCss = false
+config.autoAddCss = false;
 
-const inter = Inter({ subsets: ['latin'] })
+const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://dongobbi.github.io'),
   title: 'Don Gobbi - Full Stack Developer & AI Specialist',
-  description: 'Full-stack developer specializing in AI and modern web technologies. Expert in FastAPI, Next.js, and cutting-edge AI solutions.',
+  description:
+    'Full-stack developer specializing in AI and modern web technologies. Expert in FastAPI, Next.js, and cutting-edge AI solutions.',
   keywords: 'Full Stack Developer, AI Specialist, FastAPI, Next.js, React, Machine Learning, Web Development',
   authors: [{ name: 'Don Gobbi' }],
   openGraph: {
     title: 'Don Gobbi - Full Stack Developer & AI Specialist',
-    description: 'Full-stack developer specializing in AI and modern web technologies. Expert in FastAPI, Next.js, and cutting-edge AI solutions.',
+    description:
+      'Full-stack developer specializing in AI and modern web technologies. Expert in FastAPI, Next.js, and cutting-edge AI solutions.',
     url: 'https://dongobbi.github.io',
     siteName: 'Don Gobbi Portfolio',
     type: 'website',
     locale: 'en_US',
   },
-}
+};
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode
-}) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" className="scroll-smooth">
       <head>
@@ -46,17 +44,12 @@ export default function RootLayout({
       </head>
       <body className={`${inter.className} antialiased`}>
         <div className="min-h-screen bg-gradient-to-br from-blue-600 to-blue-400">
-          {/* Subtle pattern overlay */}
           <div className="fixed inset-0 z-0 opacity-5">
             <div className="absolute inset-0 bg-[url('/grid.svg')] bg-repeat"></div>
           </div>
-          
-          {/* Main Content */}
-          <div className="relative z-10">
-            {children}
-          </div>
+          <div className="relative z-10">{children}</div>
         </div>
       </body>
     </html>
-  )
+  );
 }
