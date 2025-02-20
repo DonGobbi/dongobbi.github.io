@@ -15,12 +15,16 @@ const ContactForm = () => {
     setStatus('submitting');
 
     try {
-      const response = await fetch('/api/contact', {
+      const response = await fetch(process.env.NEXT_PUBLIC_FORMSPREE_ENDPOINT!, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify(formData)
+        body: JSON.stringify({
+          name: formData.name,
+          email: formData.email,
+          message: formData.message
+        })
       });
 
       if (response.ok) {
