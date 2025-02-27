@@ -1,214 +1,139 @@
 'use client';
 
-import { faUser, faCode, faLaptopCode, faEnvelope, faComment } from '@fortawesome/free-solid-svg-icons';
-import NavLink from './components/NavLink';
-import ContactForm from './components/ContactForm';
-import ChatBot from './components/ChatBot';
-import ParticleBackground from './components/ParticleBackground';
-import NoiseOverlay from './components/NoiseOverlay';
 import Hero from './components/Hero';
-import SkillBar from './components/SkillBar';
 import ProjectCard from './components/ProjectCard';
-import TechStack from './components/TechStack';
-import AnimatedBackground from './components/AnimatedBackground';
-import { useState } from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { motion } from 'framer-motion';
 
+const projects = [
+  {
+    title: 'AI-Powered Chat Application',
+    description: 'A real-time chat application with AI-powered features for smart conversations and automated responses.',
+    image: '/images/project1.jpg',
+    tags: ['React', 'Node.js', 'OpenAI', 'WebSocket'],
+    githubUrl: 'https://github.com/yourusername/project1',
+    liveUrl: 'https://project1.demo.com'
+  },
+  {
+    title: 'Cloud Infrastructure Manager',
+    description: 'A dashboard for managing and monitoring cloud infrastructure across multiple providers.',
+    image: '/images/project2.jpg',
+    tags: ['AWS', 'TypeScript', 'Docker', 'GraphQL'],
+    githubUrl: 'https://github.com/yourusername/project2',
+    liveUrl: 'https://project2.demo.com'
+  },
+  {
+    title: 'E-commerce Platform',
+    description: 'A modern e-commerce platform with real-time inventory management and analytics.',
+    image: '/images/project3.jpg',
+    tags: ['Next.js', 'MongoDB', 'Stripe', 'TailwindCSS'],
+    githubUrl: 'https://github.com/yourusername/project3',
+    liveUrl: 'https://project3.demo.com'
+  }
+];
+
 export default function Home() {
-  const [isChatBotVisible, setChatBotVisible] = useState(false);
-
-  const skills = [
-    { name: 'Full-Stack Development', level: 95, color: 'linear-gradient(90deg, #6366F1, #818CF8)' },
-    { name: 'AI & Machine Learning', level: 90, color: 'linear-gradient(90deg, #8B5CF6, #A78BFA)' },
-    { name: 'Cloud Architecture', level: 88, color: 'linear-gradient(90deg, #EC4899, #F472B6)' },
-    { name: 'DevOps & CI/CD', level: 92, color: 'linear-gradient(90deg, #3B82F6, #60A5FA)' },
-    { name: 'System Design', level: 87, color: 'linear-gradient(90deg, #14B8A6, #2DD4BF)' },
-    { name: 'Database Management', level: 93, color: 'linear-gradient(90deg, #F59E0B, #FBBF24)' },
-    { name: 'API Development', level: 94, color: 'linear-gradient(90deg, #9333EA, #C084FC)' },
-    { name: 'UI/UX Design', level: 85, color: 'linear-gradient(90deg, #EF4444, #F87171)' }
-  ];
-
-  const projects = [
-    {
-      title: 'AI-Powered Knowledge Base',
-      description: 'A sophisticated document processing system using LangChain and LLAMA Index for intelligent information retrieval and analysis.',
-      tags: ['FastAPI', 'LangChain', 'Next.js', 'Chroma DB'],
-    },
-    {
-      title: 'Enterprise Data Platform',
-      description: 'Scalable data management system built with FastAPI, PostgreSQL, and SQLAlchemy, containerized with Docker.',
-      tags: ['FastAPI', 'PostgreSQL', 'Docker', 'Redux'],
-    },
-    {
-      title: 'Vector Search Engine',
-      description: 'Advanced search system utilizing Pinecone and Qdrant for efficient vector similarity search and retrieval.',
-      tags: ['Pinecone', 'Qdrant', 'React', 'TailwindCSS'],
-    },
-  ];
-
   return (
-    <main className="min-h-screen relative">
-      <AnimatedBackground />
-      <ParticleBackground />
-      <NoiseOverlay />
-
-      {/* Header/Navigation */}
-      <header className="fixed top-0 left-0 right-0 glass z-50">
-        <nav className="max-w-7xl mx-auto px-4 py-4">
-          <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
-            <motion.h1 
-              initial={{ opacity: 0, x: -20 }}
-              animate={{ opacity: 1, x: 0 }}
-              className="text-2xl font-bold text-white/90"
-            >
-              Don Gobbi
-            </motion.h1>
-            <motion.div 
-              initial={{ opacity: 0, x: 20 }}
-              animate={{ opacity: 1, x: 0 }}
-              className="flex items-center gap-6"
-            >
-              <NavLink href="#about" icon={faUser}>About</NavLink>
-              <NavLink href="#skills" icon={faCode}>Skills</NavLink>
-              <NavLink href="#projects" icon={faLaptopCode}>Projects</NavLink>
-              <NavLink href="#contact" icon={faEnvelope}>Contact</NavLink>
-            </motion.div>
-          </div>
-        </nav>
-      </header>
-
+    <main className="min-h-screen">
       {/* Hero Section */}
       <Hero />
 
-      {/* Main Content */}
-      <div className="relative z-10">
-        {/* About Section */}
-        <section id="about" className="min-h-screen py-16 px-4 flex items-center">
-          <div className="max-w-4xl mx-auto">
-            <motion.div 
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              className="glass rounded-lg p-8 hover-card"
-            >
-              <p className="text-white/80 text-lg leading-relaxed">
-                Welcome to my portfolio! I specialize in full-stack development with expertise
-                in modern AI frameworks. I build scalable applications using FastAPI and
-                Next.js, while leveraging cutting-edge AI technologies for innovative solutions.
-              </p>
-            </motion.div>
-          </div>
-        </section>
-
-        {/* Skills Section */}
-        <section id="skills" className="min-h-screen py-16 px-4">
-          <div className="max-w-6xl mx-auto">
-            <motion.h2 
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              className="text-3xl font-bold text-white/90 mb-12"
-            >
-              Skills & Expertise
-            </motion.h2>
-            
-            {/* Skill Bars */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
-              {skills.map((skill, index) => (
-                <SkillBar
-                  key={skill.name}
-                  name={skill.name}
-                  level={skill.level}
-                  color={skill.color}
-                />
-              ))}
-            </div>
-
-            {/* Tech Stack */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              className="mt-16"
-            >
-              <h3 className="text-2xl font-bold text-white/90 mb-8">Technology Stack</h3>
-              <TechStack />
-            </motion.div>
-          </div>
-        </section>
-
-        {/* Projects Section */}
-        <section id="projects" className="min-h-screen py-16 px-4">
-          <div className="max-w-4xl mx-auto">
-            <motion.h2 
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              className="text-3xl font-bold text-white/90 mb-12"
-            >
-              Featured Projects
-            </motion.h2>
-            <div className="grid grid-cols-1 gap-8">
-              {projects.map((project, index) => (
-                <ProjectCard
-                  key={project.title}
-                  {...project}
-                />
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* Contact Section */}
-        <section id="contact" className="min-h-screen py-16 px-4">
-          <div className="max-w-4xl mx-auto">
-            <motion.h2 
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              className="text-3xl font-bold text-white/90 mb-12"
-            >
-              Contact Me
-            </motion.h2>
-            <motion.div 
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              className="glass rounded-lg p-8"
-            >
-              <ContactForm />
-            </motion.div>
-          </div>
-        </section>
-      </div>
-
-      {/* ChatBot Floating Button */}
-      <div className="fixed bottom-4 right-4 z-50">
-        <motion.button
-          initial={{ opacity: 0, scale: 0.8 }}
-          animate={{ opacity: 1, scale: 1 }}
-          whileHover={{ scale: 1.1 }}
-          whileTap={{ scale: 0.9 }}
-          onClick={() => setChatBotVisible(!isChatBotVisible)}
-          className="glass text-white/80 rounded-full p-4 shadow-lg hover:shadow-xl transition duration-200"
-        >
-          <FontAwesomeIcon icon={faComment} className="text-xl" />
-        </motion.button>
-      </div>
-
-      {isChatBotVisible && (
-        <motion.div 
+      {/* Projects Section */}
+      <section id="projects" className="py-20 px-4 md:px-8 max-w-7xl mx-auto">
+        <motion.div
           initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          exit={{ opacity: 0, y: 20 }}
-          className="fixed bottom-20 right-4 w-80"
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5 }}
         >
-          <div className="glass rounded-lg shadow-xl">
-            <ChatBot />
+          <h2 className="section-heading">Featured Projects</h2>
+          <p className="section-subheading">
+            Here are some of my recent works that showcase my skills and experience
+          </p>
+        </motion.div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-12">
+          {projects.map((project, index) => (
+            <motion.div
+              key={project.title}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: index * 0.1 }}
+            >
+              <ProjectCard {...project} />
+            </motion.div>
+          ))}
+        </div>
+      </section>
+
+      {/* About Section */}
+      <section id="about" className="py-20 px-4 md:px-8 max-w-7xl mx-auto">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5 }}
+          className="glass-card p-8 md:p-12"
+        >
+          <h2 className="section-heading">About Me</h2>
+          <div className="grid md:grid-cols-2 gap-12 items-center">
+            <div>
+              <p className="text-lg text-white/70 leading-relaxed mb-6">
+                I'm a passionate Full-Stack Developer with expertise in building modern web applications. 
+                My journey in software development has been driven by a deep curiosity for technology 
+                and a desire to create impactful solutions.
+              </p>
+              <p className="text-lg text-white/70 leading-relaxed">
+                I specialize in React, Node.js, and cloud technologies, with a particular interest in 
+                AI and machine learning applications. When I'm not coding, you can find me exploring 
+                new technologies or contributing to open-source projects.
+              </p>
+            </div>
+            <div className="relative">
+              <div className="aspect-square rounded-2xl overflow-hidden">
+                <motion.div
+                  className="w-full h-full bg-gradient-to-br from-purple-500/20 to-blue-500/20 backdrop-blur-sm"
+                  animate={{
+                    background: [
+                      'linear-gradient(135deg, rgba(168,85,247,0.2) 0%, rgba(59,130,246,0.2) 100%)',
+                      'linear-gradient(135deg, rgba(59,130,246,0.2) 0%, rgba(168,85,247,0.2) 100%)',
+                    ],
+                  }}
+                  transition={{
+                    duration: 5,
+                    repeat: Infinity,
+                    repeatType: 'reverse',
+                  }}
+                />
+              </div>
+            </div>
           </div>
         </motion.div>
-      )}
+      </section>
+
+      {/* Contact Section */}
+      <section id="contact" className="py-20 px-4 md:px-8 max-w-7xl mx-auto">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5 }}
+          className="glass-card p-8 md:p-12 text-center"
+        >
+          <h2 className="section-heading">Get In Touch</h2>
+          <p className="section-subheading">
+            Have a project in mind? Let's work together to bring your ideas to life.
+          </p>
+          <motion.a
+            href="mailto:your.email@example.com"
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            className="button-primary inline-block mt-8"
+          >
+            Send me a message
+          </motion.a>
+        </motion.div>
+      </section>
     </main>
   );
 }
