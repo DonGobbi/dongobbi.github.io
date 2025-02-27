@@ -101,20 +101,41 @@ const ChatBot = () => {
         else if (!userInfo.message) {
           setUserInfo(prev => ({ ...prev, message: userMessage }));
           
-          // Send urgent notification to you
-          const response = await fetch(process.env.NEXT_PUBLIC_FORMSPREE_ENDPOINT!, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({
-              name: userInfo.name,
-              email: userInfo.email,
-              message: userMessage,
-              source: 'Direct Chat Request'
-            })
-          });
+          try {
+            // Send using Formspree
+            const formspreeEndpoint = process.env.NEXT_PUBLIC_FORMSPREE_ENDPOINT;
+            if (!formspreeEndpoint) {
+              throw new Error('Contact form configuration is missing');
+            }
 
-          if (!response.ok) throw new Error('Failed to send message');
-          addMessage('assistant', "I've notified Don about your request to chat. He'll get back to you soon at " + userInfo.email + ". Is there anything else you'd like to know while you wait?");
+            const response = await fetch(formspreeEndpoint, {
+              method: 'POST',
+              headers: { 
+                'Content-Type': 'application/json',
+                'Accept': 'application/json'
+              },
+              body: JSON.stringify({
+                name: userInfo.name,
+                email: userInfo.email,
+                message: `Direct Chat Request from Portfolio:\n\nName: ${userInfo.name}\nEmail: ${userInfo.email}\nMessage: ${userMessage}`,
+                _subject: `Portfolio Chat: ${userInfo.name} wants to connect`
+              })
+            });
+
+            if (!response.ok) {
+              throw new Error('Failed to send message');
+            }
+
+            const result = await response.json();
+            if (result.ok) {
+              addMessage('assistant', `Thanks for reaching out! I've sent your message to Don, and he'll get back to you at ${userInfo.email} soon. While you wait, feel free to ask me anything about Don's work!`);
+            } else {
+              throw new Error('Failed to send message');
+            }
+          } catch (error) {
+            console.error('Error sending message:', error);
+            addMessage('assistant', "I'm having trouble sending your message. Please try using the contact form below or email Don directly at dongobbinshombo@gmail.com");
+          }
         }
       } 
       else {
