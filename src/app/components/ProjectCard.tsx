@@ -7,13 +7,20 @@ import { FaGithub, FaExternalLinkAlt } from 'react-icons/fa';
 interface ProjectCardProps {
   title: string;
   description: string;
-  image: string;
+  image?: string;
   tags: string[];
   githubUrl?: string;
   liveUrl?: string;
 }
 
-const ProjectCard = ({ title, description, image, tags, githubUrl, liveUrl }: ProjectCardProps) => {
+const ProjectCard = ({ 
+  title, 
+  description, 
+  image = '/projects/default-project.jpg', 
+  tags, 
+  githubUrl, 
+  liveUrl 
+}: ProjectCardProps) => {
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
@@ -22,7 +29,7 @@ const ProjectCard = ({ title, description, image, tags, githubUrl, liveUrl }: Pr
       transition={{ duration: 0.5 }}
       className="glass-card group relative overflow-hidden rounded-2xl"
     >
-      <div className="relative aspect-video overflow-hidden rounded-xl">
+      <div className="relative aspect-video overflow-hidden rounded-xl bg-gradient-to-br from-purple-500/20 to-blue-500/20">
         <Image
           src={image}
           alt={title}

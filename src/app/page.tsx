@@ -31,16 +31,19 @@ export default function Home() {
       title: 'AI-Powered Knowledge Base',
       description: 'A sophisticated document processing system using LangChain and LLAMA Index for intelligent information retrieval and analysis.',
       tags: ['FastAPI', 'LangChain', 'Next.js', 'Chroma DB'],
+      image: '/projects/ai-knowledge-base.jpg'
     },
     {
       title: 'Enterprise Data Platform',
       description: 'Scalable data management system built with FastAPI, PostgreSQL, and SQLAlchemy, containerized with Docker.',
       tags: ['FastAPI', 'PostgreSQL', 'Docker', 'Redux'],
+      image: '/projects/data-platform.jpg'
     },
     {
       title: 'Vector Search Engine',
       description: 'Advanced search system utilizing Pinecone and Qdrant for efficient vector similarity search and retrieval.',
       tags: ['Pinecone', 'Qdrant', 'React', 'TailwindCSS'],
+      image: '/projects/vector-search.jpg'
     },
   ];
 
