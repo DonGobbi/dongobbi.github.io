@@ -1,0 +1,31 @@
+:root {
+  --primary: #38b2ac; /* Softer teal */
+  --primary-dark: #2c7a7b; /* Darker teal */
+  --secondary: #f6e05e; /* Soft yellow */
+  --accent: #f59e0b; /* Accent color */
+  --background: #f8fafc; /* Light background */
+  --text: #1e293b; /* Text color */
+}
+
+body {
+  color: var(--text);
+  background: var(--background);
+}
+
+.button {
+  @apply px-4 py-2 bg-primary text-white rounded-lg hover:bg-primary-dark transition-colors;
+}
+
+.section-title {
+  @apply text-4xl font-bold mb-8 text-gray-800 relative inline-block;
+}
+
+.skill-card {
+  @apply p-6 rounded-xl bg-white shadow-lg hover:shadow-xl transition-shadow duration-300;
+}
+
+.project-card {
+  @apply p-6 rounded-xl bg-white shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100;
+}
+
+/* Additional styles can be added as needed */
