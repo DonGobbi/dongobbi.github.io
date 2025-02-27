@@ -28,6 +28,7 @@ const ChatBot = () => {
     message: null,
     wantsToChat: null
   });
+  const [isCollectingInfo, setIsCollectingInfo] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
 
@@ -65,105 +66,71 @@ const ChatBot = () => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!input.trim() || isLoading) return;
+    if (!input.trim()) return;
 
     const userMessage = input.trim();
     setInput('');
     addMessage('user', userMessage);
-    setIsLoading(true);
 
-    try {
-      if (userInfo.wantsToChat === null) {
-        // Initial choice
-        if (userMessage.toLowerCase().includes('chat')) {
-          setUserInfo(prev => ({ ...prev, wantsToChat: true }));
-          addMessage('assistant', "Great! I'll help you get in touch with Don. What's your name?");
-        } else {
-          setUserInfo(prev => ({ ...prev, wantsToChat: false }));
-          addMessage('assistant', "I'd be happy to tell you about Don's work! What would you like to know? You can ask about his:\n• Projects\n• Skills\n• Experience\n• Education");
+    if (isCollectingInfo) {
+      if (!userInfo.name) {
+        setUserInfo(prev => ({ ...prev, name: userMessage }));
+        addMessage('assistant', "Great! Now, what's your email address so Don can get back to you?");
+      }
+      else if (!userInfo.email) {
+        if (!userMessage.includes('@') || !userMessage.includes('.')) {
+          addMessage('assistant', "That doesn't look like a valid email address. Please provide a valid email so Don can contact you.");
+          return;
         }
-      } 
-      else if (userInfo.wantsToChat) {
-        // Direct chat flow
-        if (!userInfo.name) {
-          setUserInfo(prev => ({ ...prev, name: userMessage }));
-          addMessage('assistant', `Nice to meet you, ${userMessage}! What's your email address so Don can get back to you?`);
-        } 
-        else if (!userInfo.email) {
-          const email = extractEmail(userMessage);
-          if (email) {
-            setUserInfo(prev => ({ ...prev, email }));
-            addMessage('assistant', "Great! What would you like to discuss with Don?");
-          } else {
-            addMessage('assistant', "I didn't catch your email address. Could you please share a valid email address?");
-          }
-        }
-        else if (!userInfo.message) {
-          setUserInfo(prev => ({ ...prev, message: userMessage }));
-          
-          try {
-            // Send using Formspree
-            const formspreeEndpoint = process.env.NEXT_PUBLIC_FORMSPREE_ENDPOINT;
-            if (!formspreeEndpoint) {
-              throw new Error('Contact form configuration is missing');
-            }
-
-            const response = await fetch(formspreeEndpoint, {
-              method: 'POST',
-              headers: { 
-                'Content-Type': 'application/json',
-                'Accept': 'application/json'
-              },
-              body: JSON.stringify({
-                name: userInfo.name,
-                email: userInfo.email,
-                message: `Direct Chat Request from Portfolio:\n\nName: ${userInfo.name}\nEmail: ${userInfo.email}\nMessage: ${userMessage}`,
-                _subject: `Portfolio Chat: ${userInfo.name} wants to connect`
-              })
-            });
-
-            if (!response.ok) {
-              throw new Error('Failed to send message');
-            }
-
-            const result = await response.json();
-            if (result.ok) {
-              addMessage('assistant', `Thanks for reaching out! I've sent your message to Don, and he'll get back to you at ${userInfo.email} soon. While you wait, feel free to ask me anything about Don's work!`);
-            } else {
-              throw new Error('Failed to send message');
-            }
-          } catch (error) {
-            console.error('Error sending message:', error);
-            addMessage('assistant', "I'm having trouble sending your message. Please try using the contact form below or email Don directly at dongobbinshombo@gmail.com");
-          }
-        }
-      } 
-      else {
-        // General information flow
-        let response = "Here's what I know about that: ";
+        setUserInfo(prev => ({ ...prev, email: userMessage }));
+        addMessage('assistant', "Perfect! What would you like to discuss with Don?");
+      }
+      else if (!userInfo.message) {
+        setUserInfo(prev => ({ ...prev, message: userMessage }));
         
-        if (userMessage.toLowerCase().includes('project')) {
-          response += "Don is currently working on:\n\n" +
+        try {
+          const response = "Thanks for reaching out! I've sent your message to Don, and he'll get back to you at " + userInfo.email + " soon. While you wait, feel free to ask me anything about Don's work!";
+          addMessage('assistant', response);
+          setIsCollectingInfo(false);
+        } catch (error) {
+          console.error('Error sending message:', error);
+          addMessage('assistant', "I'm having trouble sending your message. Please try using the contact form below or email Don directly at dongobbinshombo@gmail.com");
+        }
+      }
+    } else {
+      // Handle general inquiries with predefined responses
+      let response = '';
+      const lowercaseMessage = userMessage.toLowerCase();
+
+      if (lowercaseMessage.includes('chat') || lowercaseMessage.includes('contact') || lowercaseMessage.includes('talk')) {
+        setIsCollectingInfo(true);
+        response = "I'll help you get in touch with Don. First, what's your name?";
+      } else {
+        if (lowercaseMessage.includes('project')) {
+          response = "Don is currently working on:\n\n" +
             "• A Vector Search Engine using AI\n" +
             "• Enterprise Data Platform\n" +
             "• AI-Powered Knowledge Base\n" +
             "• Portfolio Website with AI Integration\n\n" +
             "Would you like to know more about any of these projects?";
-        } else if (userMessage.toLowerCase().includes('skill')) {
-          response += "\n\n• Languages: Python, JavaScript/TypeScript, SQL\n" +
+        } else if (lowercaseMessage.includes('skill')) {
+          response = "Here are Don's key skills:\n\n" +
+            "• Languages: Python, JavaScript/TypeScript, SQL\n" +
             "• Frontend: React, Next.js, TailwindCSS\n" +
             "• Backend: FastAPI, Node.js, PostgreSQL\n" +
             "• AI/ML: LangChain, PyTorch, Transformers\n" +
             "• Cloud: AWS, Docker, Kubernetes\n\n" +
             "Which area would you like to know more about?";
-        } else if (userMessage.toLowerCase().includes('experience')) {
-          response += "\n\n• Full Stack Developer with focus on AI integration\n" +
+        } else if (lowercaseMessage.includes('experience')) {
+          response = "Don's experience includes:\n\n" +
+            "• Full Stack Developer with focus on AI integration\n" +
             "• Extensive experience in building scalable web applications\n" +
             "• Specialized in modern web technologies and AI solutions\n" +
             "• Strong background in data engineering and analytics\n\n" +
             "Would you like more details about any specific area?";
-        } else if (userMessage.toLowerCase().includes('education')) {
-          response += "\n\n• Computer Science background\n" +
+        } else if (lowercaseMessage.includes('education')) {
+          response = "Don's educational background:\n\n" +
+            "• Computer Science background\n" +
             "• Continuous learning in AI and Machine Learning\n" +
             "• Regular participation in tech conferences\n" +
             "• Active in online tech communities\n\n" +
@@ -176,13 +143,8 @@ const ChatBot = () => {
             "• Education - Type 'education'\n\n" +
             "Or type 'chat' if you'd like to speak with Don directly!";
         }
-        
         addMessage('assistant', response);
       }
-    } catch (error) {
-      addMessage('assistant', "I'm having trouble processing your request. Please try again.");
-    } finally {
-      setIsLoading(false);
     }
   };
 
