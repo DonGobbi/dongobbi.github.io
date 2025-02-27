@@ -8,6 +8,11 @@ module.exports = {
   theme: {
     extend: {
       colors: {
+        'background-start': 'var(--background-start)',
+        'background-end': 'var(--background-end)',
+        'primary': 'var(--primary)',
+        'secondary': 'var(--secondary)',
+        'accent': 'var(--accent)',
         'royal-blue': {
           light: '#4169E1',
           DEFAULT: '#4169E1',
