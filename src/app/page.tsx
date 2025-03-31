@@ -30,21 +30,20 @@ export default function Home() {
     {
       title: 'AI Knowledge Base',
       description: 'A knowledge base system powered by artificial intelligence.',
-      tags: ['FastAPI', 'LangChain', 'Next.js', 'Chroma DB'],
-      image: '/projects/default-project.jpg'
+      image: '/projects/AI_KnowledgeBase.png',
+      tags: ['FastAPI', 'LangChain', 'Next.js', 'Chroma DB']
     },
     {
       title: 'Data Platform',
       description: 'A comprehensive data management and analytics platform.',
-      tags: ['FastAPI', 'PostgreSQL', 'Docker', 'Redux'],
-      image: '/projects/default-project.jpg'
+      image: '/projects/dataPlatform.png',
+      tags: ['FastAPI', 'PostgreSQL', 'Docker', 'Redux']
     },
     {
       title: 'Vector Search',
       description: 'An efficient vector-based search implementation.',
-      tags: ['Pinecone', 'Qdrant', 'React', 'TailwindCSS'],
-      image: '/projects/default-project.jpg'
-    },
+      tags: ['Pinecone', 'Qdrant', 'React', 'TailwindCSS']
+    }
   ];
 
   return (

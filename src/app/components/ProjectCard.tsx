@@ -6,6 +6,7 @@ import { FaGithub, FaExternalLinkAlt } from 'react-icons/fa';
 interface ProjectCardProps {
   title: string;
   description: string;
+  image?: string;
   tags: string[];
   githubUrl?: string;
   liveUrl?: string;
@@ -13,7 +14,8 @@ interface ProjectCardProps {
 
 const ProjectCard = ({ 
   title, 
-  description, 
+  description,
+  image,
   tags, 
   githubUrl, 
   liveUrl 
@@ -27,10 +29,21 @@ const ProjectCard = ({
       className="glass-card group relative overflow-hidden rounded-2xl"
     >
       <div className="relative aspect-video overflow-hidden rounded-xl bg-gradient-to-br from-purple-500/20 to-blue-500/20">
-        <div className="absolute inset-0 flex items-center justify-center">
-          <div className="text-2xl font-bold text-purple-400/80">{title}</div>
-        </div>
-        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+        {image ? (
+          <>
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src={image}
+              alt={title}
+              className="absolute inset-0 h-full w-full object-cover transition-transform duration-500 group-hover:scale-110"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+          </>
+        ) : (
+          <div className="absolute inset-0 flex items-center justify-center">
+            <div className="text-2xl font-bold text-purple-400/80">{title}</div>
+          </div>
+        )}
       </div>
 
       <div className="relative p-6">
