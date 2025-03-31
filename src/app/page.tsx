@@ -28,22 +28,22 @@ export default function Home() {
 
   const projects = [
     {
-      title: 'AI-Powered Knowledge Base',
-      description: 'A sophisticated document processing system using LangChain and LLAMA Index for intelligent information retrieval and analysis.',
+      title: 'AI Knowledge Base',
+      description: 'A knowledge base system powered by artificial intelligence.',
       tags: ['FastAPI', 'LangChain', 'Next.js', 'Chroma DB'],
-      image: '/projects/ai-knowledge-base.jpg'
+      image: '/projects/default-project.jpg'
     },
     {
-      title: 'Enterprise Data Platform',
-      description: 'Scalable data management system built with FastAPI, PostgreSQL, and SQLAlchemy, containerized with Docker.',
+      title: 'Data Platform',
+      description: 'A comprehensive data management and analytics platform.',
       tags: ['FastAPI', 'PostgreSQL', 'Docker', 'Redux'],
-      image: '/projects/data-platform.jpg'
+      image: '/projects/default-project.jpg'
     },
     {
-      title: 'Vector Search Engine',
-      description: 'Advanced search system utilizing Pinecone and Qdrant for efficient vector similarity search and retrieval.',
+      title: 'Vector Search',
+      description: 'An efficient vector-based search implementation.',
       tags: ['Pinecone', 'Qdrant', 'React', 'TailwindCSS'],
-      image: '/projects/vector-search.jpg'
+      image: '/projects/default-project.jpg'
     },
   ];
 
