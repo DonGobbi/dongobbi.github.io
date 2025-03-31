@@ -1,8 +1,13 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import Image from 'next/image';
 import { FaGithub, FaExternalLinkAlt } from 'react-icons/fa';
+
+const PROJECT_IMAGES: Record<string, string> = {
+  'ai-knowledge-base': "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI2MDAiIGhlaWdodD0iNDAwIj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjMWExYTFhIi8+PHRleHQgeD0iNTAlIiB5PSI1MCUiIGRvbWluYW50LWJhc2VsaW5lPSJtaWRkbGUiIHRleHQ6YW5jaG9yPSJtaWRkbGUiIGZvbnQtZmFtaWx5PSJzYW5zLXNlcmlmIiBmb250LXNpemU9IjI0IiBmaWxsPSIjYjI0N2ZmIj5BSSBLbm93bGVkZ2UgQmFzZTwvdGV4dD48L3N2Zz4=",
+  'data-platform': "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI2MDAiIGhlaWdodD0iNDAwIj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjMWExYTFhIi8+PHRleHQgeD0iNTAlIiB5PSI1MCUiIGRvbWluYW50LWJhc2VsaW5lPSJtaWRkbGUiIHRleHQ6YW5jaG9yPSJtaWRkbGUiIGZvbnQtZmFtaWx5PSJzYW5zLXNlcmlmIiBmb250LXNpemU9IjI0IiBmaWxsPSIjYjI0N2ZmIj5EYXRhIFBsYXRmb3JtPC90ZXh0Pjwvc3ZnPg==",
+  'vector-search': "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI2MDAiIGhlaWdodD0iNDAwIj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjMWExYTFhIi8+PHRleHQgeD0iNTAlIiB5PSI1MCUiIGRvbWluYW50LWJhc2VsaW5lPSJtaWRkbGUiIHRleHQ6YW5jaG9yPSJtaWRkbGUiIGZvbnQtZmFtaWx5PSJzYW5zLXNlcmlmIiBmb250LXNpemU9IjI0IiBmaWxsPSIjYjI0N2ZmIj5WZWN0b3IgU2VhcmNoPC90ZXh0Pjwvc3ZnPg=="
+};
 
 interface ProjectCardProps {
   title: string;
@@ -16,11 +21,14 @@ interface ProjectCardProps {
 const ProjectCard = ({ 
   title, 
   description, 
-  image = '/projects/default-project.jpg', 
+  image,
   tags, 
   githubUrl, 
   liveUrl 
 }: ProjectCardProps) => {
+  // Get image based on title or use default
+  const imageUrl = image || PROJECT_IMAGES[title.toLowerCase().replace(/\s+/g, '-')] || PROJECT_IMAGES['ai-knowledge-base'];
+
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
@@ -30,12 +38,11 @@ const ProjectCard = ({
       className="glass-card group relative overflow-hidden rounded-2xl"
     >
       <div className="relative aspect-video overflow-hidden rounded-xl bg-gradient-to-br from-purple-500/20 to-blue-500/20">
-        <Image
-          src={image}
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img
+          src={imageUrl}
           alt={title}
-          fill
-          className="object-cover transition-transform duration-500 group-hover:scale-110"
-          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+          className="absolute inset-0 h-full w-full object-cover transition-transform duration-500 group-hover:scale-110"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
       </div>

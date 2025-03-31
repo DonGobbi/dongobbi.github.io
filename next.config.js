@@ -3,6 +3,12 @@ const nextConfig = {
   output: 'export',
   images: {
     unoptimized: true,
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'placehold.co',
+      },
+    ],
   },
   reactStrictMode: true,
   // Disable basePath since we're deploying to the root domain
