@@ -42,6 +42,7 @@ export default function Home() {
     {
       title: 'Vector Search',
       description: 'An efficient vector-based search implementation.',
+      image: '/projects/vector.png',
       tags: ['Pinecone', 'Qdrant', 'React', 'TailwindCSS']
     }
   ];
