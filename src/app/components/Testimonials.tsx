@@ -24,8 +24,8 @@ const Testimonials = () => {
     },
     {
       name: 'Byamasu Patrick',
-      role: 'Product Manager',
-      company: 'Innovation Labs',
+      role: 'CEO',
+      company: 'Rexplore.ai',
       content: 'Working with Don was a fantastic experience. His attention to detail and ability to translate complex requirements into elegant solutions is remarkable.',
       avatar: '👨‍💻',
       rating: 5
