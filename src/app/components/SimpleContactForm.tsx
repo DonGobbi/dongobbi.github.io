@@ -87,7 +87,7 @@ const SimpleContactForm: React.FC = () => {
       {submitStatus === 'error' && (
         <div className="p-4 bg-red-50 text-red-700 rounded-lg flex items-center gap-2 animate-shake">
           <FontAwesomeIcon icon={faExclamationCircle} />
-          <span>Failed to send message. Please try again or email me directly at dongobbinshombo@gmail.com</span>
+          <span>Failed to send message. Please try again or email me directly at don@rexplore.ai</span>
         </div>
       )}
 

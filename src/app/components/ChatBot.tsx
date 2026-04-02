@@ -94,7 +94,7 @@ const ChatBot = () => {
           setIsCollectingInfo(false);
         } catch (error) {
           console.error('Error sending message:', error);
-          addMessage('assistant', "I'm having trouble sending your message. Please try using the contact form below or email Don directly at dongobbinshombo@gmail.com");
+          addMessage('assistant', "I'm having trouble sending your message. Please try using the contact form below or email Don directly at don@rexplore.ai");
         }
       }
     } else {
@@ -104,7 +104,7 @@ const ChatBot = () => {
 
       if (lowercaseMessage.includes('chat') || lowercaseMessage.includes('contact') || lowercaseMessage.includes('talk')) {
         setIsCollectingInfo(true);
-        response = "I'll help you get in touch with Don. First, what's your name?";
+        addMessage('assistant', "I'll help you get in touch with Don. First, what's your name?");
       } else {
         if (lowercaseMessage.includes('project')) {
           response = "Don is currently working on:\n\n" +
@@ -160,6 +160,8 @@ const ChatBot = () => {
           whileTap={{ scale: 0.9 }}
           onClick={() => setIsOpen(true)}
           className="fixed bottom-4 right-4 z-[9999] p-4 rounded-full shadow-lg bg-gradient-to-r from-[var(--primary)] to-[var(--secondary)] text-white hover:shadow-xl transition-all duration-300"
+          aria-label="Open chat"
+          title="Chat with Don's Assistant"
         >
           <FontAwesomeIcon icon={faMessage} className="text-xl" />
         </motion.button>
@@ -187,6 +189,8 @@ const ChatBot = () => {
                 setUserInfo({ name: null, email: null, message: null, wantsToChat: null });
               }}
               className="w-8 h-8 flex items-center justify-center rounded-full hover:bg-white/10 text-white/60 hover:text-white/90 transition-colors"
+              aria-label="Close chat"
+              title="Close chat"
             >
               <FontAwesomeIcon icon={faTimes} />
             </button>
@@ -235,6 +239,8 @@ const ChatBot = () => {
                 type="submit"
                 disabled={isLoading || !input.trim()}
                 className="w-10 h-10 flex items-center justify-center rounded-full bg-gradient-to-r from-[var(--primary)] to-[var(--secondary)] text-white disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-300 hover:shadow-lg"
+                aria-label="Send message"
+                title="Send message"
               >
                 <FontAwesomeIcon icon={isLoading ? faSpinner : faPaperPlane} className={isLoading ? 'animate-spin' : ''} />
               </button>

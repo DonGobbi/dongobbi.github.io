@@ -124,32 +124,32 @@ const Hero = () => {
           className="flex justify-center gap-6"
         >
           <motion.a
-            href="https://github.com/yourusername"
+            href="https://github.com/DonGobbi"
             target="_blank"
             rel="noopener noreferrer"
-            whileHover={{ y: -3 }}
+            whileHover={{ y: -3, scale: 1.1 }}
             whileTap={{ y: 0 }}
-            className="text-white/60 hover:text-white transition-colors"
+            className="w-12 h-12 rounded-full bg-white/5 hover:bg-purple-500/20 flex items-center justify-center text-white/60 hover:text-purple-400 transition-all"
           >
             <FaGithub className="w-6 h-6" />
           </motion.a>
           <motion.a
-            href="https://linkedin.com/in/yourusername"
+            href="https://www.linkedin.com/in/don-nshombo-88366a3b8/"
             target="_blank"
             rel="noopener noreferrer"
-            whileHover={{ y: -3 }}
+            whileHover={{ y: -3, scale: 1.1 }}
             whileTap={{ y: 0 }}
-            className="text-white/60 hover:text-white transition-colors"
+            className="w-12 h-12 rounded-full bg-white/5 hover:bg-blue-500/20 flex items-center justify-center text-white/60 hover:text-blue-400 transition-all"
           >
             <FaLinkedin className="w-6 h-6" />
           </motion.a>
           <motion.a
-            href="https://twitter.com/yourusername"
+            href="https://twitter.com/dongobbi"
             target="_blank"
             rel="noopener noreferrer"
-            whileHover={{ y: -3 }}
+            whileHover={{ y: -3, scale: 1.1 }}
             whileTap={{ y: 0 }}
-            className="text-white/60 hover:text-white transition-colors"
+            className="w-12 h-12 rounded-full bg-white/5 hover:bg-sky-500/20 flex items-center justify-center text-white/60 hover:text-sky-400 transition-all"
           >
             <FaTwitter className="w-6 h-6" />
           </motion.a>
@@ -166,7 +166,7 @@ const Hero = () => {
             transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
             className="cursor-pointer"
           >
-            <a href="#about" className="text-white/50 hover:text-purple-400/80 transition-colors">
+            <a href="#about" className="text-white/50 hover:text-purple-400/80 transition-colors" aria-label="Scroll to About section" title="Scroll down">
               <svg 
                 className="w-6 h-6"
                 fill="none"
