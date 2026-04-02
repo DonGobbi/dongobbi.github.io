@@ -21,17 +21,10 @@ const Experience = () => {
       type: 'work'
     },
     {
-      year: '2021 - 2023',
-      title: 'Full-Stack Developer',
-      company: 'Digital Solutions Inc',
-      description: 'Built and maintained multiple web applications using React, Next.js, and Python. Implemented CI/CD pipelines and automated testing.',
-      type: 'work'
-    },
-    {
-      year: '2019 - 2021',
-      title: 'Junior Developer',
-      company: 'StartUp Hub',
-      description: 'Developed responsive web applications and RESTful APIs. Collaborated with cross-functional teams on agile projects.',
+      year: '2022 - 2025',
+      title: 'AI Trainer & Data Analyst',
+      company: 'RWS Group',
+      description: 'Trained AI models, performed data analysis, and contributed to machine learning projects. Ensured data quality and accuracy for AI training datasets.',
       type: 'work'
     },
     {

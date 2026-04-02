@@ -5,7 +5,7 @@ import { FaGithub, FaLinkedin, FaTwitter } from 'react-icons/fa';
 
 const Hero = () => {
   return (
-    <div className="min-h-screen flex items-center justify-center relative overflow-hidden">
+    <div className="min-h-screen flex items-center justify-center relative overflow-hidden pt-20">
       {/* Background Elements */}
       <div className="absolute inset-0 z-0">
         <div className="absolute inset-0 bg-gradient-to-b from-transparent via-black/50 to-black/80" />
@@ -39,7 +39,7 @@ const Hero = () => {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-        className="relative z-10 text-center px-4 max-w-5xl mx-auto"
+        className="relative z-10 text-center px-6 md:px-4 max-w-5xl mx-auto space-y-6"
       >
         <motion.div
           initial={{ opacity: 0, scale: 0.9 }}
@@ -47,10 +47,10 @@ const Hero = () => {
           transition={{ duration: 0.5, delay: 0.2 }}
           className="mb-6 inline-block"
         >
-          <div className="text-2xl md:text-3xl text-purple-300 font-light mb-4">Hello, I'm</div>
+          <div className="text-xl md:text-2xl text-purple-300 font-light">Hello, I'm</div>
         </motion.div>
         
-        <h1 className="text-6xl md:text-8xl font-bold mb-6 hero-text tracking-tight">
+        <h1 className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-bold mb-4 hero-text tracking-tight">
           Don Nshombo Gobbi
         </h1>
 
@@ -58,9 +58,9 @@ const Hero = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.4 }}
-          className="mb-8"
+          className="mb-6"
         >
-          <h2 className="text-2xl md:text-3xl font-light text-white/80 leading-relaxed">
+          <h2 className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-light text-white/80 leading-relaxed">
             A Full-Stack Developer passionate about
             <div className="h-[1.5em] overflow-hidden mt-2">
               <motion.div
@@ -86,7 +86,7 @@ const Hero = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.6 }}
-          className="text-xl md:text-2xl text-white/60 mb-12 max-w-3xl mx-auto leading-relaxed"
+          className="text-base sm:text-lg md:text-xl text-white/60 mb-8 max-w-3xl mx-auto leading-relaxed px-2"
         >
           Crafting elegant, scalable applications that merge cutting-edge technology 
           with beautiful user experiences. Let's build something amazing together! ✨
@@ -96,7 +96,7 @@ const Hero = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.8 }}
-          className="flex gap-6 justify-center mb-12"
+          className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center items-center mb-8"
         >
           <motion.a
             href="#projects"
