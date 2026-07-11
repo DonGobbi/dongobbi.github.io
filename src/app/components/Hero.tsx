@@ -1,7 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { FaGithub, FaLinkedin, FaTwitter } from 'react-icons/fa';
+import { FaGithub, FaLinkedin, FaEnvelope } from 'react-icons/fa';
 
 const Hero = () => {
   return (
@@ -61,7 +61,7 @@ const Hero = () => {
           className="mb-6"
         >
           <h2 className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-light text-white/80 leading-relaxed">
-            A Full-Stack Developer passionate about
+            A Full-Stack &amp; AI Developer building
             <div className="h-[1.5em] overflow-hidden mt-2">
               <motion.div
                 animate={{ y: [0, -60, -120, -180, 0] }}
@@ -72,11 +72,11 @@ const Hero = () => {
                   times: [0, 0.25, 0.5, 0.75, 1]
                 }}
               >
-                <div className="h-[1.5em] text-purple-400">AI Innovation</div>
-                <div className="h-[1.5em] text-blue-400">Cloud Architecture</div>
-                <div className="h-[1.5em] text-indigo-400">Creative Solutions</div>
+                <div className="h-[1.5em] text-purple-400">AI Applications</div>
+                <div className="h-[1.5em] text-blue-400">Education Technology</div>
+                <div className="h-[1.5em] text-indigo-400">Solutions for Africa</div>
                 <div className="h-[1.5em] text-violet-400">Modern Web Apps</div>
-                <div className="h-[1.5em] text-purple-400">AI Innovation</div>
+                <div className="h-[1.5em] text-purple-400">AI Applications</div>
               </motion.div>
             </div>
           </h2>
@@ -88,8 +88,9 @@ const Hero = () => {
           transition={{ duration: 0.5, delay: 0.6 }}
           className="text-base sm:text-lg md:text-xl text-white/60 mb-8 max-w-3xl mx-auto leading-relaxed px-2"
         >
-          Crafting elegant, scalable applications that merge cutting-edge technology 
-          with beautiful user experiences. Let's build something amazing together! ✨
+          I build practical AI-powered products and full-stack web apps — from AI tutors
+          and quiz platforms to translation services — often designed for African communities.
+          Let's build something meaningful together. ✨
         </motion.p>
 
         <motion.div 
@@ -144,14 +145,13 @@ const Hero = () => {
             <FaLinkedin className="w-6 h-6" />
           </motion.a>
           <motion.a
-            href="https://twitter.com/dongobbi"
-            target="_blank"
-            rel="noopener noreferrer"
+            href="mailto:don@rexplore.ai"
             whileHover={{ y: -3, scale: 1.1 }}
             whileTap={{ y: 0 }}
-            className="w-12 h-12 rounded-full bg-white/5 hover:bg-sky-500/20 flex items-center justify-center text-white/60 hover:text-sky-400 transition-all"
+            className="w-12 h-12 rounded-full bg-white/5 hover:bg-purple-500/20 flex items-center justify-center text-white/60 hover:text-purple-400 transition-all"
+            aria-label="Email"
           >
-            <FaTwitter className="w-6 h-6" />
+            <FaEnvelope className="w-6 h-6" />
           </motion.a>
         </motion.div>
 

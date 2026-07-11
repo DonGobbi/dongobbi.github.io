@@ -1,7 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { FaGithub, FaLinkedin, FaTwitter, FaEnvelope, FaHeart } from 'react-icons/fa';
+import { FaGithub, FaLinkedin, FaEnvelope, FaHeart } from 'react-icons/fa';
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -9,7 +9,6 @@ const Footer = () => {
   const socialLinks = [
     { icon: FaGithub, href: 'https://github.com/DonGobbi', label: 'GitHub' },
     { icon: FaLinkedin, href: 'https://www.linkedin.com/in/don-nshombo-88366a3b8/', label: 'LinkedIn' },
-    { icon: FaTwitter, href: 'https://twitter.com/dongobbi', label: 'Twitter' },
     { icon: FaEnvelope, href: 'mailto:don@rexplore.ai', label: 'Email' }
   ];
 

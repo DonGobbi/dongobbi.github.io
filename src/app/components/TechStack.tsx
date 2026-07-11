@@ -11,52 +11,39 @@ interface TechItemProps {
 const TechStack = () => {
   const techItems: TechItemProps[] = [
     // Languages
-    { name: 'Python', icon: '🐍', category: 'Languages' },
+    { name: 'TypeScript', icon: '�', category: 'Languages' },
     { name: 'JavaScript', icon: '📜', category: 'Languages' },
-    { name: 'TypeScript', icon: '💪', category: 'Languages' },
-    { name: 'SQL', icon: '📊', category: 'Languages' },
+    { name: 'Python', icon: '�', category: 'Languages' },
+    { name: 'C++', icon: '⚙️', category: 'Languages' },
     { name: 'HTML5', icon: '🌐', category: 'Languages' },
     { name: 'CSS3', icon: '🎨', category: 'Languages' },
 
     // Frameworks & Libraries
-    { name: 'React', icon: '⚛️', category: 'Frameworks' },
     { name: 'Next.js', icon: '▲', category: 'Frameworks' },
+    { name: 'React', icon: '⚛️', category: 'Frameworks' },
     { name: 'FastAPI', icon: '⚡', category: 'Frameworks' },
-    { name: 'Django', icon: '🎯', category: 'Frameworks' },
-    { name: 'TailwindCSS', icon: '🌊', category: 'Frameworks' },
-    { name: 'Redux', icon: '🔄', category: 'Frameworks' },
+    { name: 'Express', icon: '🚂', category: 'Frameworks' },
+    { name: 'Node.js', icon: '🟢', category: 'Frameworks' },
+    { name: 'Tailwind CSS', icon: '🌊', category: 'Frameworks' },
 
-    // AI & ML
-    { name: 'LangChain', icon: '🔗', category: 'AI & ML' },
-    { name: 'LLAMA Index', icon: '🦙', category: 'AI & ML' },
-    { name: 'TensorFlow', icon: '🧠', category: 'AI & ML' },
-    { name: 'PyTorch', icon: '🔥', category: 'AI & ML' },
-    { name: 'Scikit-learn', icon: '📊', category: 'AI & ML' },
-    { name: 'Hugging Face', icon: '🤗', category: 'AI & ML' },
+    // AI & LLMs
+    { name: 'Groq', icon: '⚡', category: 'AI & LLMs' },
+    { name: 'Nebius AI', icon: '🧠', category: 'AI & LLMs' },
+    { name: 'LLMs', icon: '🤖', category: 'AI & LLMs' },
+    { name: 'OCR', icon: '�', category: 'AI & LLMs' },
 
-    // Databases
-    { name: 'PostgreSQL', icon: '🐘', category: 'Databases' },
-    { name: 'MongoDB', icon: '🍃', category: 'Databases' },
-    { name: 'Redis', icon: '📕', category: 'Databases' },
-    { name: 'Chroma DB', icon: '🎨', category: 'Databases' },
-    { name: 'Pinecone', icon: '🌲', category: 'Databases' },
-    { name: 'Qdrant', icon: '🔍', category: 'Databases' },
+    // Data & Backend
+    { name: 'MongoDB', icon: '🍃', category: 'Data & Backend' },
+    { name: 'Firebase', icon: '�', category: 'Data & Backend' },
+    { name: 'REST APIs', icon: '🔌', category: 'Data & Backend' },
+    { name: 'Google Auth', icon: '�', category: 'Data & Backend' },
 
-    // DevOps & Tools
-    { name: 'Docker', icon: '🐳', category: 'DevOps' },
-    { name: 'Git', icon: '📚', category: 'DevOps' },
-    { name: 'GitHub Actions', icon: '⚡', category: 'DevOps' },
-    { name: 'AWS', icon: '☁️', category: 'DevOps' },
-    { name: 'Linux', icon: '🐧', category: 'DevOps' },
-    { name: 'Nginx', icon: '🌐', category: 'DevOps' },
-
-    // Testing & Quality
-    { name: 'Jest', icon: '🃏', category: 'Testing' },
-    { name: 'Pytest', icon: '🧪', category: 'Testing' },
-    { name: 'Cypress', icon: '🌲', category: 'Testing' },
-    { name: 'Selenium', icon: '🤖', category: 'Testing' },
-    { name: 'Postman', icon: '📬', category: 'Testing' },
-    { name: 'SonarQube', icon: '📊', category: 'Testing' }
+    // Tools & DevOps
+    { name: 'Git', icon: '📚', category: 'Tools & DevOps' },
+    { name: 'GitHub', icon: '🐙', category: 'Tools & DevOps' },
+    { name: 'GitHub Actions', icon: '🔄', category: 'Tools & DevOps' },
+    { name: 'Vercel', icon: '▲', category: 'Tools & DevOps' },
+    { name: 'Linux', icon: '�', category: 'Tools & DevOps' }
   ];
 
   const categories = Array.from(new Set(techItems.map(item => item.category)));

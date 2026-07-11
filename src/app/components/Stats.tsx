@@ -45,10 +45,10 @@ const AnimatedCounter = ({ value, suffix }: { value: number; suffix: string }) =
 
 const Stats = () => {
   const stats: StatItem[] = [
-    { value: 5, suffix: '+', label: 'Years Experience', icon: '⏱️' },
-    { value: 50, suffix: '+', label: 'Projects Completed', icon: '🚀' },
-    { value: 30, suffix: '+', label: 'Happy Clients', icon: '😊' },
-    { value: 99, suffix: '%', label: 'Client Satisfaction', icon: '⭐' }
+    { value: 14, suffix: '+', label: 'Public Repositories', icon: '📦' },
+    { value: 8, suffix: '+', label: 'AI-Powered Projects', icon: '🧠' },
+    { value: 3, suffix: '', label: 'Live Products', icon: '�' },
+    { value: 3, suffix: '+', label: 'Years Building', icon: '⏱️' }
   ];
 
   return (

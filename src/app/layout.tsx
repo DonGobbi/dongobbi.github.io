@@ -34,7 +34,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
-        <meta name="theme-color" content="#4169E1" />
+        <meta name="theme-color" content="#0F172A" />
         <meta name="robots" content="index, follow" />
         <meta name="googlebot" content="index, follow" />
         <meta name="format-detection" content="telephone=no" />
@@ -44,10 +44,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         />
       </head>
       <body className={`${inter.className} antialiased`}>
-<div className="min-h-screen bg-gradient-to-br from-teal-600 to-teal-400">
-          <div className="fixed inset-0 z-0 opacity-5">
-            <div className="absolute inset-0 bg-[url('/grid.svg')] bg-repeat"></div>
-          </div>
+        <div className="min-h-screen bg-[var(--background-start)]">
           <div className="relative z-10">{children}</div>
         </div>
       </body>
